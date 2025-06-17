@@ -4,37 +4,32 @@
  * NAME: Connor Goldschmidt
  * DATE: June, 2025
  *
- * Residence class description ... 
+ * Represents a residence based on the attributes of given data. 
  */
 
  package com.expeditors.interview;
  import java.util.ArrayList;
  import java.util.List;
- import java.util.PriorityQueue;
- import java.util.Queue;
- 
- 
  
  public class Residence {
- 
      private String address;
      private String city;
      private String state;
-     private Queue<Person> residents;
+     private List<Person> residents;
  
      public Residence(){
          this.address = "";
-         this.residents = new PriorityQueue<>();
+         this.residents = new ArrayList<>();
      }
  
      public Residence(String address, String city, String state){
          this.address = address;
          this.city = city;
          this.state = state;
-         this.residents = new PriorityQueue<>();
+         this.residents = new ArrayList<>();
      }
  
-     public Queue<Person> getResidents(){
+     public List<Person> getResidents(){
          return this.residents;
      }
  
@@ -49,5 +44,5 @@
      @Override
      public String toString(){
          return this.address + ", " + this.city + ", " + this.state;
-     }
+     }  
  }

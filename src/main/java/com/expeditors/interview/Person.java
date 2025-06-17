@@ -4,7 +4,7 @@
  * NAME: Connor Goldschmidt
  * DATE: June, 2025
  *
- * Person class description ... 
+ * Represents a person based on the attributes from the given data.
  */
 
  package com.expeditors.interview;
@@ -26,6 +26,7 @@
          this.firstName = firstName;
          this.lastName = lastName;
          this.age = age;
+         this.residence = new Residence();
      }
  
      public String getFirstName(){
@@ -40,13 +41,19 @@
          return this.age;
      }
  
+     public Residence getResidence(Residence residence){
+         return this.residence;
+     }
+ 
      public void setResidence(Residence residence){
          this.residence = residence;
      }
  
+ 
+ 
      @Override
      public String toString(){
-         return this.firstName + ", " + this.lastName + ", " + String.valueOf(age);
+         return this.firstName + ", " + this.lastName + ", " + this.residence.toString() + ", " + String.valueOf(age);
      }
  
      @Override
