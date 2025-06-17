@@ -1,1 +1,4 @@
-com/expeditors/interview/App.class
+com/expeditors/interview/Main.class
+com/expeditors/interview/Person.class
+com/expeditors/interview/Residence.class
+com/expeditors/interview/Parser.class
