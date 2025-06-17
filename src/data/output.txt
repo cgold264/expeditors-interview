@@ -1,0 +1,14 @@
+Household: 234 2nd ave, tacoma, fl Occupants: 0
+Household: 123 main st, seattle, wa Occupants: 0
+Household: 234 2nd ave, seattle, wa Occupants: 0
+Household: 234 2nd ave, tacoma, wa Occupants: 0
+Household: 345 3rd blvd apt 200, seattle, wa Occupants: 0
+George, Brown, 18
+Helen, Brown, 18
+Carol, Johnson, 67
+Frank, Jones, 23
+Alice, Smith, 45
+Dave, Smith, 43
+Eve, Smith, 25
+Ian, Smith, 18
+Bob, Williams, 26

@@ -2,7 +2,7 @@
  * Expeditors Take Home Assessment
  * 
  * NAME: Connor Goldschmidt
- * DATE: March, 2025
+ * DATE: June, 2025
  *
  * Person class description ... 
  */
@@ -13,11 +13,13 @@
      private String firstName;
      private String lastName;
      private int age;
+     private Residence residence;
  
      public Person(){
          firstName = "";
          lastName = "";
          age = -1;
+         residence = new Residence();
      }
  
      public Person(String firstName, String lastName, int age){
@@ -38,9 +40,13 @@
          return this.age;
      }
  
+     public void setResidence(Residence residence){
+         this.residence = residence;
+     }
+ 
      @Override
      public String toString(){
-         return firstName + ", " + lastName + ", " + String.valueOf(age);
+         return this.firstName + ", " + this.lastName + ", " + String.valueOf(age);
      }
  
      @Override

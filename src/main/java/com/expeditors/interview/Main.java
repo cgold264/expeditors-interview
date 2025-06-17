@@ -2,12 +2,14 @@ package com.expeditors.interview;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.List;
 import java.util.Queue;
+import java.util.Collections;
 
 
 public class Main 
@@ -15,44 +17,23 @@ public class Main
     public static void main( String[] args )
     {
         String filePath = "src/data/data.txt";
+        String outputPath = "src/data/output.txt";
 
-        Set<Residence> allResidences = new HashSet<>();
-        List<Person> people = new ArrayList<>();
-       // PriorityQueue<Person> pq = new PriorityQueue<>();
-        try{
-            List<String> lines = Files.readAllLines(Paths.get(filePath));
-            for (String line : lines){
-                Residence residence = Parser.parseResidence(line);
-                Person person = Parser.parsePerson(line);
-                if(!allResidences.contains(residence)){
-                    allResidences.add(residence);
-                }
-                if(person.getAge() >= 18){
-                    residence.addResident(person);
-                }
-                allResidences.add(residence);
-                people.add(person);
-            }
-        } catch (IOException e){
-            e.printStackTrace();
+        List<String> lines = Processor.readFile(filePath);
+
+        ResidenceManager residenceManager = new ResidenceManager();
+        PersonManager personManager = new PersonManager();
+
+        for(String line : lines){
+            Residence residence = Processor.parseResidence(line);
+            Person person = Processor.parsePerson(line);
+            residenceManager.addPersonToResidence(residence, person);
+            personManager.addPerson(person);
         }
 
-        String houseHolds = "";
-        for(Residence r : allResidences){
-            String line = "Household: " + r + " Occupants: " + r.getResidentsCount() + ":\n";
-            houseHolds += line;
-            System.out.println(line);
-            Person last;
-            Queue<Person> pq = r.getResidents();
-            while ((last = pq.poll()) != null) {
-                System.out.println(last);
-            }
-            System.out.println();
-        }
-        //System.out.println(houseHolds);
-        
+        String formattedResidenceInformation = residenceManager.getResidencesSummary();
+        String formattedPersonInformation = personManager.formatPeopleList();
 
+        Processor.writeToFile(outputPath, formattedResidenceInformation + formattedPersonInformation);
     }
-
-
 }

@@ -30,7 +30,7 @@
      void testPersonParser()
      {
          String testString = "\"Dave\",\"Smith\",\"123 main st.\",\"seattle\",\"wa\",\"43\"";
-         Person testPerson = Parser.parsePerson(testString);
+         Person testPerson = Processor.parsePerson(testString);
          String expectedString = "Dave, Smith, 43";
          assertEquals( expectedString, testPerson.toString() );
      }
