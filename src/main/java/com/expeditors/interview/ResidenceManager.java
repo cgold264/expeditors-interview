@@ -11,16 +11,20 @@ package com.expeditors.interview;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
+import java.util.ArrayList;
 import java.util.Collections;
 
 public class ResidenceManager {
     private Map<String, Residence> allResidences;
 
+    /**
+     * Default constructor, initializes allResidences to an empty HashMap.
+     */
     public ResidenceManager(){
         this.allResidences = new HashMap<>();
     }
 
-    /*
+    /**
      * Getter for allResidences attribute.
      * 
      * @return a map where each key is the string representation
@@ -30,7 +34,7 @@ public class ResidenceManager {
         return allResidences;
     }
 
-    /*
+    /**
      * Add a single residence to the manager.
      * 
      * @param residence to be added. 
@@ -39,7 +43,7 @@ public class ResidenceManager {
         this.allResidences.put(residence.toString(), residence);
     }
 
-    /*
+    /**
      * Adds a single person to the given residence.
      * 
      * @param person to be added to residence.
@@ -49,10 +53,10 @@ public class ResidenceManager {
         String key = residence.toString();
         allResidences.putIfAbsent(key, residence);
         allResidences.get(key).addResident(person);
-       person.setResidence(residence);
+        person.setResidence(residence);
     }
     
-    /*
+    /**
      * Builds a string representation of all current residence objects and 
      * counts the number of associated Occupants for each residence.
      * 
@@ -65,7 +69,7 @@ public class ResidenceManager {
             summary.append("Household: ").append(residence)
                    .append(" Occupants: ").append(residence.getResidentsCount())
                    .append("\n");
-            List<Person> occupants = residence.getResidents();
+            List<Person> occupants = new ArrayList<>(residence.getResidents());
             Collections.sort(occupants);
             for(Person occupant : occupants){
                 if(occupant.getAge() > 18)

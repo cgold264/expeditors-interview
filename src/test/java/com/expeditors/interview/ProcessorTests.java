@@ -10,6 +10,7 @@
  package com.expeditors.interview;
 
  import static org.junit.jupiter.api.Assertions.assertEquals;
+ import static org.junit.jupiter.api.Assertions.assertNotEquals;
  import static org.junit.jupiter.api.Assertions.assertFalse;
  import static org.junit.jupiter.api.Assertions.assertTrue;
  
@@ -26,7 +27,7 @@
      @BeforeEach
      void setUp() {
          line1 = "\"Dave\",\"Smith\",\"123 main st.\",\"seattle\",\"wa\",\"43\"";
-         line2 = "\"Alice\",\"Smith\",\"123 Main St.\",\"Seattle\",\"WA\",\"45\"";
+         line2 = "\"Alice\",\"Bob\",\"123 Main St.\",\"Seattle\",\"WA\",\"45\"";
          line3 = "\"Bob\",\"Williams\",\"234 2nd Ave.\",\"234 2nd Ave\",\"WA\",\"26\"";
      }
  
@@ -50,6 +51,25 @@
          assertEquals(residence1.getState(), test1.getState());
      }
  
+     @Test
+     void testParseResidenceSameAddress()
+     {
+         Residence residence1 = Processor.parseResidence(line1);
+         Residence residence2 = Processor.parseResidence(line2);
+         Residence test1 = new Residence("123 main st", "seattle", "wa");
+         assertEquals(residence1.getAddress(), test1.getAddress(), residence2.getAddress());
+         assertEquals(residence1.getCity(), test1.getCity(), residence2.getCity());
+         assertEquals(residence1.getState(), test1.getState(), residence2.getState());
+     }
  
+     @Test
+     void testParseResidenceSameAddressDifferentPerson()
+     {
+         Person person1 = Processor.parsePerson(line1);
+         Person person2 = Processor.parsePerson(line2);
+         assertNotEquals(person2.getFirstName(), person1.getFirstName());
+         assertNotEquals(person2.getLastName(), person1.getLastName());
+         assertNotEquals(person2.getAge(), person1.getAge());
+     }
  
  }

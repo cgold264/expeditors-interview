@@ -75,6 +75,18 @@ public class ResidenceManagerTests {
     @Test
     void testGetResidencesSummary() {
         residenceManager.addPersonToResidence(residence1, person1);
+
+        String summary = residenceManager.getResidencesSummary();
+
+        assertTrue(summary.contains("Household: " + residence1));
+        assertTrue(summary.contains("Occupants: 1"));
+        assertTrue(summary.contains(person1.toString()));
+
+    }
+
+    @Test
+    void testGetResidencesOccupantsOver18() {
+        residenceManager.addPersonToResidence(residence1, person1);
         residenceManager.addPersonToResidence(residence1, person2);
         residenceManager.addPersonToResidence(residence1, person3);
 
@@ -83,8 +95,8 @@ public class ResidenceManagerTests {
         assertTrue(summary.contains("Household: " + residence1));
         assertTrue(summary.contains("Occupants: 3"));
         assertTrue(summary.contains(person1.toString()));
-        assertTrue(summary.contains(person3.toString()));
         assertFalse(summary.contains(person2.toString()));
-    }
+        assertFalse(summary.contains(person3.toString()));
 
+    }
 }
