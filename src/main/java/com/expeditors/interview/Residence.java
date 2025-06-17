@@ -29,6 +29,18 @@
          this.residents = new ArrayList<>();
      }
  
+     public String getAddress(){
+         return this.address;
+     }
+ 
+     public String getCity(){
+         return this.city;
+     }
+ 
+     public String getState(){
+         return this.state;
+     }
+ 
      public List<Person> getResidents(){
          return this.residents;
      }

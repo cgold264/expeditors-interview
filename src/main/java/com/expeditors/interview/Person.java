@@ -19,14 +19,14 @@
          firstName = "";
          lastName = "";
          age = -1;
-         residence = new Residence();
+         residence = null;
      }
  
      public Person(String firstName, String lastName, int age){
          this.firstName = firstName;
          this.lastName = lastName;
          this.age = age;
-         this.residence = new Residence();
+         this.residence = null;
      }
  
      public String getFirstName(){
@@ -41,14 +41,13 @@
          return this.age;
      }
  
-     public Residence getResidence(Residence residence){
+     public Residence getResidence(){
          return this.residence;
      }
  
      public void setResidence(Residence residence){
          this.residence = residence;
      }
- 
  
  
      @Override
