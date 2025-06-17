@@ -52,7 +52,7 @@ expeditors-interview/
 │   ├── test/
 │   │   ├── java/com/example/app/
 │   │   │   ├── ResidenceManagerTests.java # Unit tests
-│   │   │   ├── PersonManagerTests.java 
+│   │   │   ├── ProssesorTests.java 
 │   ├── data/
 │   │   ├── data.txt #Data 
 │   │   ├── output.txt #Solution output
@@ -84,7 +84,7 @@ expeditors-interview/
 
 
 3. **Performance Considerations**
- - The `ResidenceManager` stores all `Person` objects using an ArrayList. While the all `Person` objects are required to be in sorted order alphabetically, the amortized O(1) insertion for ArrayLists allows the data to efficiently scale. When printing the final output the objects are sorted using Collections.sort which has a time complexity of O(N*log N). Since we are only sorting once and only require the occupants to be sorted when we print, this option was selected. 
+ - The `ResidenceManager` stores all `Person` objects using an ArrayList. While all the `Person` objects are required to be in sorted order alphabetically, the amortized O(1) appending for ArrayLists allows the data to efficiently scale. When printing the final output the objects are sorted using Collections.sort which has a time complexity of O(N*log N). Since we are only sorting once and only require the occupants to be sorted when we print, this option was selected. 
  - To track all `Residence` objects in the `ResidenceManager` class a hashmap was selected where the string representation acts as a key and the object itself acts as the value. A hashmap was selected for its O(1) insertion and O(1) access. This makes it incredibly efficient for retrieving residence's to add new occupants. Given more context, it could be better to index each residence by an ID value as opposed to a string representation of the address.
 
 4. **Testing**
@@ -101,7 +101,7 @@ expeditors-interview/
     
   - Columns are grouped between sets of quotations and separated by commas.
   - There has been no standardization in the data. In order to compare residences, the data was standardized to only include alpha and numeric characters. 
-  - As seen in the data, abbreviations such as 'apt', 'blvd', 'st', 'ave' are used. It is assumed that these abbreviations are consistent throughout. For example, there will not be cases where the same address will reference apartment as anything other than 'Apt'.
+  - As seen in the data, abbreviations such as 'apt', 'blvd', 'st', 'ave' are used. It is assumed that these abbreviations are consistent throughout. For example, there will not be cases where the same address will reference apartment as anything other than 'apt'.
   - It is assumed capitalization is consistent for Person names. All entries in data have consistent capitalization with the first letter of the first and last name being capitalized. 
 
 2. **Object Relationships**
