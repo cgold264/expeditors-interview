@@ -9,7 +9,7 @@
 
  package com.expeditors.interview;
 
- public class Person {
+ public class Person implements Comparable<Person>{
      private String firstName;
      private String lastName;
      private int age;
@@ -26,6 +26,14 @@
          this.age = age;
      }
  
+     public String getFirstName(){
+         return this.firstName;
+     }
+ 
+     public String getLastName(){
+         return this.lastName;
+     }
+ 
      public int getAge(){
          return this.age;
      }
@@ -33,6 +41,14 @@
      @Override
      public String toString(){
          return firstName + ", " + lastName + ", " + String.valueOf(age);
+     }
+ 
+     @Override
+     public int compareTo(Person other) {
+         if(this.lastName.equals(other.getLastName())){
+             return this.firstName.compareTo(other.getFirstName());
+         }
+         return this.lastName.compareTo(other.getLastName()); 
      }
  
  }

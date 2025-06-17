@@ -10,6 +10,9 @@
  package com.expeditors.interview;
  import java.util.ArrayList;
  import java.util.List;
+ import java.util.PriorityQueue;
+ import java.util.Queue;
+ 
  
  
  public class Residence {
@@ -17,21 +20,21 @@
      private String address;
      private String city;
      private String state;
-     private List<Person> residents;
+     private Queue<Person> residents;
  
      public Residence(){
          this.address = "";
-         this.residents = new ArrayList<>();
+         this.residents = new PriorityQueue<>();
      }
  
      public Residence(String address, String city, String state){
          this.address = address;
          this.city = city;
          this.state = state;
-         this.residents = new ArrayList<>();
+         this.residents = new PriorityQueue<>();
      }
  
-     public List<Person> getResidents(){
+     public Queue<Person> getResidents(){
          return this.residents;
      }
  
